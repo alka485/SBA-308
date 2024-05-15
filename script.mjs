@@ -107,6 +107,26 @@ const CourseInfo = {
         student["avg"] = 0;
         let total_score = 0;
         let total_possible_score = 0;
+
+        for (let j = 0; j <value.length; j++) {
+          console.log(value[j]);
+
+          const submittedAtDate = new Date(value[j][1].submitted_at);
+          console.log(submittedAtDate);
+
+          const dueAtDate = new Date(ag.assignments[value[j][0]].due_at);
+
+          console.log(dueAtDate);
+
+          try {
+
+          } catch (error) {
+            console.error("Error", error.message);
+            break
+          }
+
+
+        }
       })
     }
     catch (error){
