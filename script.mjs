@@ -80,6 +80,7 @@ const CourseInfo = {
     // here, we would process this data to achieve the desired result.
     
     //If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid.
+    console.log(course);
     try {
       const course_id = course.id;
       if(course_id !== ag.course_id){
