@@ -80,7 +80,9 @@ const CourseInfo = {
     // here, we would process this data to achieve the desired result.
     
     //If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid.
-    console.log(course);
+
+    //console.log(submissions);
+    
     try {
       const course_id = course.id;
       if(course_id !== ag.course_id){
@@ -124,10 +126,10 @@ const CourseInfo = {
           try {
             if(dueAtDate < currentDate) {
               let learnerAssignId = value[j][0];
-              console.log(learnerAssignId);
+              console.log("learnerassignid",learnerAssignId);
 
               let assignmentID = ag.assignments[value[j][0]-1].id;
-              console.log(assignmentID);
+              console.log("assignmentId",assignmentID);
 
               let pointsPossible =
                       ag.assignments[value[j][0] - 1].points_possible;
@@ -136,7 +138,12 @@ const CourseInfo = {
               let submissionScore = value[j][1].score;
               console.log(submissionScore);
                       
+              if(learnerAssignId === assignmentID){
+                console.log("true");
+              //if the learner’s submission is late (submitted_at is past due_at), deduct 10 percent of the total points possible from their score for that assignment.  
+              }
             }
+
 
           } catch (error) {
             console.error("Error", error.message);
