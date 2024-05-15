@@ -78,8 +78,19 @@ const CourseInfo = {
   
   function getLearnerData(course, ag, submissions) {
     // here, we would process this data to achieve the desired result.
+    
+    //If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid.
+
+    if(course_id ! == ag.course_id){
+      throw new Error("Invalid Input")
+    }
+
+
+
+
     const result = [
       {
+        // the ID of the learner for which this data has been collected
         id: 125,
         avg: 0.985, // (47 + 150) / (50 + 150)
         1: 0.94, // 47 / 50
