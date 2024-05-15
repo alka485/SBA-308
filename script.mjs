@@ -86,6 +86,11 @@ const CourseInfo = {
         throw new Error("Invalid Input");
       }
       const learnerMap = new Map ();
+      for( let i = 0; i < submissions.length;i++){
+        let leanerID = submissions[i].learner_id;
+        let assignmentID = submissions[i].assignment_id;
+
+      }
     }
     catch (error){
       console.error("Error processing data",error.message);
