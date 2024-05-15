@@ -87,9 +87,19 @@ const CourseInfo = {
       }
       const learnerMap = new Map ();
       for( let i = 0; i < submissions.length;i++){
-        let leanerID = submissions[i].learner_id;
+        let learnerID = submissions[i].learner_id;
         let assignmentID = submissions[i].assignment_id;
-
+        let submissionVar = submissions[i].submission;
+        let submittedDate = submissions[i].submission.submitted_at;
+        let learnerScore = submissions[i].submission.score;
+        
+        if(!learnerMap.has(learnerID)) {
+          //If doesn't exist in Map
+          learnerMap.set(learnerID, [[assignmentID,submissionVar]]);
+        } else {
+          //If does exist in Map
+          learnerMap.get(learnerID).push([assignmentID,submissionVar]);
+        }
       }
     }
     catch (error){
