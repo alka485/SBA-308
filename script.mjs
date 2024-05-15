@@ -78,6 +78,8 @@ const CourseInfo = {
   
   function getLearnerData(course, ag, submissions) {
     // here, we would process this data to achieve the desired result.
+
+    let result1 = [];
     
     //If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid.
 
@@ -112,7 +114,7 @@ const CourseInfo = {
         let total_possible_score = 0;
 
         for (let j = 0; j <value.length; j++) {
-          //console.log(value[j]);
+          //console.log("value",value[j][0]);
 
           const submittedAtDate = new Date(value[j][1].submitted_at);
           // console.log(submittedAtDate);
@@ -126,32 +128,43 @@ const CourseInfo = {
           try {
             if(dueAtDate < currentDate) {
               let learnerAssignId = value[j][0];
-              console.log("learnerassignid",learnerAssignId);
+              //console.log("learnerassignid",learnerAssignId);
 
               let assignmentID = ag.assignments[value[j][0]-1].id;
-              console.log("assignmentId",assignmentID);
+              //console.log("assignmentId",assignmentID);
 
               let pointsPossible =
-                      ag.assignments[value[j][0] - 1].points_possible;
-              console.log(pointsPossible);
+              ag.assignments[value[j][0] - 1].points_possible;
+              //console.log(pointsPossible);
 
               let submissionScore = value[j][1].score;
-              console.log(submissionScore);
+              //console.log(submissionScore);
                       
               if(learnerAssignId === assignmentID){
-                console.log("true");
-              //if the learner’s submission is late (submitted_at is past due_at), deduct 10 percent of the total points possible from their score for that assignment.  
+                //console.log("true");
+              //if the learner’s submission is late (submitted_at is past due_at), deduct 10 percent of the total points possible from their score for that assignment. 
+              if(submittedAtDate > dueAtDate){
+                // console.log("true value");
+                total_score += submissionScore * 0.9;
+                //console.log("total_score",total_score);
+                total_possible_score += pointsPossible
+              } else {
+                //console.log("falsy");
+                total_score += submissionScore;
+                total_possible_score += pointsPossible;
+              }
               }
             }
 
+            student["avg"] = total_score / total_possible_score;
+            console.log("avg" , student);
 
           } catch (error) {
             console.error("Error", error.message);
             break
           }
-
-
         }
+
       })
     }
     catch (error){
