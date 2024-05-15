@@ -109,19 +109,32 @@ const CourseInfo = {
         let total_possible_score = 0;
 
         for (let j = 0; j <value.length; j++) {
-          console.log(value[j]);
+          //console.log(value[j]);
 
           const submittedAtDate = new Date(value[j][1].submitted_at);
           // console.log(submittedAtDate);
 
-          const dueAtDate = new Date(ag.assignments[value[j][0]].due_at);
+          const dueAtDate = new Date(ag.assignments[value[j][0] - 1].due_at);
 
           //console.log(dueAtDate);
+
+          const currentDate = new Date();
 
           try {
             if(dueAtDate < currentDate) {
               let learnerAssignId = value[j][0];
               console.log(learnerAssignId);
+
+              let assignmentID = ag.assignments[value[j][0]-1].id;
+              console.log(assignmentID);
+
+              let pointsPossible =
+                      ag.assignments[value[j][0] - 1].points_possible;
+              console.log(pointsPossible);
+
+              let submissionScore = value[j][1].score;
+              console.log(submissionScore);
+                      
             }
 
           } catch (error) {
