@@ -87,6 +87,10 @@ const CourseInfo = {
       }
       const learnerMap = new Map ();
     }
+    catch (error){
+      console.error("Error processing data",error.message);
+      ///break;
+    }
 
 
 
