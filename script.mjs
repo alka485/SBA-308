@@ -112,13 +112,17 @@ const CourseInfo = {
           console.log(value[j]);
 
           const submittedAtDate = new Date(value[j][1].submitted_at);
-          console.log(submittedAtDate);
+          // console.log(submittedAtDate);
 
           const dueAtDate = new Date(ag.assignments[value[j][0]].due_at);
 
-          console.log(dueAtDate);
+          //console.log(dueAtDate);
 
           try {
+            if(dueAtDate < currentDate) {
+              let learnerAssignId = value[j][0];
+              console.log(learnerAssignId);
+            }
 
           } catch (error) {
             console.error("Error", error.message);
