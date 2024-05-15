@@ -101,6 +101,13 @@ const CourseInfo = {
           learnerMap.get(learnerID).push([assignmentID,submissionVar]);
         }
       }
+      learnerMap.forEach((value, key) => {
+        let student = {};
+        student["id"] = key;
+        student["avg"] = 0;
+        let total_score = 0;
+        let total_possible_score = 0;
+      })
     }
     catch (error){
       console.error("Error processing data",error.message);
